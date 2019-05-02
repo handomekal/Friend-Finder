@@ -4,7 +4,7 @@
 // These data sources hold arrays of information on table-data, waitinglist, etc.
 // ===============================================================================
 
-var friendsData = require("../public/friends.js");
+var friendsData = require("../data/friends.js");
 //var surveyData = require("../data/surveyData");
 
 

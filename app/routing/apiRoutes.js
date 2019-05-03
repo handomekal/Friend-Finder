@@ -48,25 +48,25 @@ module.exports = function(app) {
        res.json(false);
      }
    });
-// var newFriend = {
-//     name: req.body.name,
-//     photo: req.body.photo,
-//     scores: []
-// };
-// var scoresArray = [];
-// for(var i = 0; i < req.body.scores.length; length, i++) {
-//     scoresArray.push(parseInt(req.body.scores[i]))
-// }
-// newFriend.scores = scoresArray;
+var newFriend = {
+    name: req.body.name,
+    photo: req.body.photo,
+    scores: []
+};
+var scoresArray = [];
+for(var i = 0; i < req.body.scores.length; length, i++) {
+    scoresArray.push(parseInt(req.body.scores[i]))
+}
+newFriend.scores = scoresArray;
 
-// var scoreComparisionArray = [];
-//     for(var i=0; i < friendsData.length; i++){
+var scoreComparisionArray = [];
+    for(var i=0; i < friendsData.length; i++){
 
-//       // Check each friend's scores and sum difference in points
-//       var currentComparison = 0;
-//       for(var j=0; j < newFriend.scores.length; j++){
-//         currentComparison += Math.abs( newFriend.scores[j] - friendsData[i].scores[j] );
-//       };
+      // Check each friend's scores and sum difference in points
+      var currentComparison = 0;
+      for(var j=0; j < newFriend.scores.length; j++){
+        currentComparison += Math.abs( newFriend.scores[j] - friendsData[i].scores[j] );
+      };
       //{scoreComparisionArray.push(currentComparison)};
   // ---------------------------------------------------------------------------
   // I added this below code so you could clear out the table while working with the functionality.
@@ -81,3 +81,5 @@ module.exports = function(app) {
   });
 
 };
+module.exports = apiRoutes;
+}

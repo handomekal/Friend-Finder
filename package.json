@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "Friend-Finder",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,8 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/handomekal/Friend-Finder.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/handomekal/Friend-Finder/issues"
+  },
+  "homepage": "https://github.com/handomekal/Friend-Finder#readme",
   "dependencies": {
     "express": "^4.16.4",
     "path": "^0.12.7"

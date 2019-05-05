@@ -12,7 +12,7 @@ var friendsData = require("../data/friends.js");
 // ROUTING
 // ===============================================================================
 
-module.exports = function(app) {
+const apiRoutes = function(app) {
   // API GET Requests
   // Below code handles when users "visit" a page.
   // In each of the below cases when a user visits a link
@@ -20,7 +20,10 @@ module.exports = function(app) {
   // ---------------------------------------------------------------------------
 
   app.get("/api/friends", function(req, res) {
+    
+    
     res.json(friendsData);
+    
   });
 
 //   app.get("/api/surveylist", function(req, res) {
@@ -35,51 +38,60 @@ module.exports = function(app) {
   // Then the server saves the data to the tableData array)
   // ---------------------------------------------------------------------------
 
-  app.post("/api/friends", function(req, res) {
-    // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-    // It will do this by sending out the value "true" have a table
-    // req.body is available since we're using the body parsing middleware
-     if (friendsData.length < 5) {
-      friendsData.push(req.body);
-      res.json(true);
-     }
-     else {
-      surveyData.push(req.body);
-       res.json(false);
-     }
-   });
-var newFriend = {
-    name: req.body.name,
-    photo: req.body.photo,
-    scores: []
-};
-var scoresArray = [];
-for(var i = 0; i < req.body.scores.length; length, i++) {
-    scoresArray.push(parseInt(req.body.scores[i]))
-}
-newFriend.scores = scoresArray;
+   app.post("/api/friends", function(req, res) {
+   console.log(req.body)
+   var newFriend = req.body;
+   var name = req.body.name;
+   var photo = req.body.photo;
+   var scores = req.body.scores;
 
-var scoreComparisionArray = [];
-    for(var i=0; i < friendsData.length; i++){
+   friendsData.push(newFriend);
 
-      // Check each friend's scores and sum difference in points
-      var currentComparison = 0;
-      for(var j=0; j < newFriend.scores.length; j++){
-        currentComparison += Math.abs( newFriend.scores[j] - friendsData[i].scores[j] );
-      };
-      //{scoreComparisionArray.push(currentComparison)};
-  // ---------------------------------------------------------------------------
-  // I added this below code so you could clear out the table while working with the functionality.
-  // Don"t worry about it!
+     res.send(friendsData[0]);
+   })
+//     // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
+//     // It will do this by sending out the value "true" have a table
+//     // req.body is available since we're using the body parsing middleware
+//      if (friendsData.length < 5) {
+//       friendsData.push(req.body);
+//       res.json(true);
+//      }
+//      else {
+//       surveyData.push(req.body);
+//        res.json(false);
+//      }
+//    });
+// var newFriend = {
+//     name: req.body.name,
+//     photo: req.body.photo,
+//     scores: []
+// };
+// var scoresArray = [];
+// for(var i = 0; i < req.body.scores.length; length, i++) {
+//     scoresArray.push(parseInt(req.body.scores[i]))
+// }
+// newFriend.scores = scoresArray;
 
-  app.post("/api/clear", function(req, res) {
-    // Empty out the arrays of data
-    friendsData.length = 0;
-    surveyData.length = 0;
+// var scoreComparisionArray = [];
+//     for(var i=0; i < friendsData.length; i++){
 
-    res.json({ ok: true });
-  });
+//       // Check each friend's scores and sum difference in points
+//       var currentComparison = 0;
+//       for(var j=0; j < newFriend.scores.length; j++){
+//         currentComparison += Math.abs( newFriend.scores[j] - friendsData[i].scores[j] );
+//       };
+//       //{scoreComparisionArray.push(currentComparison)};
+//   // ---------------------------------------------------------------------------
+//   // I added this below code so you could clear out the table while working with the functionality.
+//   // Don"t worry about it!
 
-};
-module.exports = apiRoutes;
-}
+//   app.post("/api/clear", function(req, res) {
+//     // Empty out the arrays of data
+//     friendsData.length = 0;
+//     surveyData.length = 0;
+
+//     res.json({ ok: true });
+//   });
+
+ };
+ module.exports = apiRoutes;
